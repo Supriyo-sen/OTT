@@ -1,10 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../../src/screens/HomeScreen';
 import ProfileScreen from '../../src/screens/ProfileScreen';
 import MovieDetail from '../../src/screens/MovieDetailScreen';
+import AboutScreen from '../../src/screens/AboutScreen';
+import DetailScreen from '../../src/screens/DetailScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +19,7 @@ const CustomTabBarButton = ({ children, onPress }) => (
 const Tabs = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
-      tabBarIcon: ({ focused, color, size }) => {
+      tabBarIcon: ({ color, size }) => {
         let iconName;
 
         switch (route.name) {
@@ -57,13 +59,15 @@ const Tabs = () => (
         ),
     })}
   >
-    <Tab.Screen name="Explore" component={ProfileScreen} />
-    <Tab.Screen name="Watch" component={ProfileScreen} />
+    <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Screen name="Detail" component={DetailScreen} />
     <Tab.Screen name="Home" component={HomeScreen} />
     <Tab.Screen name="Details" component={MovieDetail} />
-    <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Screen name="About" component={AboutScreen} />
   </Tab.Navigator>
 );
+
+
 
 const styles = StyleSheet.create({
   customButton: {
